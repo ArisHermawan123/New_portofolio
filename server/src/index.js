@@ -1,4 +1,5 @@
   const express = require('express')
+  const path = require('path')
   const router = express()
   const port = 5000
   const bodyParser = require('body-parser')
@@ -14,7 +15,9 @@
       console.log('its conected')
     }
   })
-
+  router.get('/', (req, res)=>{
+    res.sendFile(path.join(__dirname, './structure//style.cssindex.html'))
+  })
   router.get('/portofolio_aris', (req, res)=>{
     client.query(`select * from portofolio_aris`, (err, result)=>{
     if(!err){
